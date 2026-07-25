@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "metar-daily-extremes"
+version = "0.1.0"
+description = "Reconstruct a weather station's published daily high and low from raw METAR, and measure which rounding convention a source actually uses."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11"
+authors = [{ name = "Muhammad Indra Adha" }]
+keywords = ["metar", "weather", "aviation", "temperature", "climatology", "asos"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Atmospheric Science",
+]
+dependencies = []
+
+[project.optional-dependencies]
+# Only needed for the live/archive HTTP clients in metar_extremes.sources.
+http = ["httpx>=0.27"]
+dev = ["pytest>=8.0", "httpx>=0.27"]
+
+[project.urls]
+Homepage = "https://github.com/amindraa05/metar-daily-extremes"
+Issues = "https://github.com/amindraa05/metar-daily-extremes/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src", "tests"]
+addopts = "-q"
